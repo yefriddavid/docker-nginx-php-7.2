@@ -29,4 +29,4 @@ ADD php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 ADD www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 EXPOSE 9000
-CMD ["php-fpm7.0 -—allow-to-run-as-root"]
+CMD ["php-fpm7.0", "--allow-to-run-as-root"]
