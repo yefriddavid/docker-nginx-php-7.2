@@ -26,20 +26,14 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY docker/app/default /etc/nginx/sites-available/default
+COPY default /etc/nginx/sites-available/default
 
-COPY docker/app/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
+COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 
-COPY docker/app/www.conf /etc/php/7.0/fpm/pool.d/www.conf
-
-COPY . /var/www/html/
+COPY www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 EXPOSE 80
 
-COPY docker/app/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-WORKDIR /var/www/html/
-
-RUN cp .env.example .env
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord"]
