@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Jose Fonseca <jose@ditecnologia.com>
+MAINTAINER Jeffrey Rios <yefriddavid@gmail.com>
 
 
 RUN apt-get clean && apt-get update && apt-get install -y locales
@@ -28,6 +28,7 @@ RUN apt-get update \
        	php7.2-sqlite3 \ 
 	php7.2-zip \
 	php7.2-pdo-dblib \
+    ## php-mongodb \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir /run/php \
     && apt-get remove -y --purge software-properties-common \
@@ -39,11 +40,9 @@ RUN apt-get update \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY default /etc/nginx/sites-available/default
-
-COPY php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
-
-COPY www.conf /etc/php/7.0/fpm/pool.d/www.conf
+#COPY default /etc/nginx/sites-available/default
+#COPY php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
+#COPY www.conf /etc/php/7.2/fpm/pool.d/www.conf
 
 EXPOSE 80
 
