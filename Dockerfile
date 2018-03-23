@@ -10,8 +10,8 @@ ENV LANG en_us.UTF-8
 ENV LANGUAGE es_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN apt-get update \
-    && apt-get install -y nginx curl zip unzip git software-properties-common supervisor sqlite3 \
+#RUN apt-get update \
+RUN apt-get install -y nginx curl zip unzip git software-properties-common supervisor sqlite3 \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
     && apt-get install -y \
