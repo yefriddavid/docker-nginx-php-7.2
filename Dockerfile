@@ -30,6 +30,7 @@ RUN apt-get install -y nginx curl zip unzip git software-properties-common super
 	php7.2-soap \
 	php7.2-pdo-dblib \	
      	php-mongodb \
+## 	php7.2-mongodb
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir /run/php \
     && apt-get remove -y --purge software-properties-common \
